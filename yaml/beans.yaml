@@ -1,0 +1,45 @@
+aspects: !!map
+  anAspect:
+    pointcuts:
+      apointCut:
+        expression: doBusiness[12]
+        method: methodInterceptor
+    type: method
+    ref: myAspectBean
+    expression: Service$
+  anotherAspect:
+    pointcuts:
+      anotherpointCut:
+        expression: \w
+        method: exceptionInterceptor
+    type: exception
+    ref: myAspectBean
+    expression: Service$
+
+beans: !!map
+  myAspectBean:
+    class: AnAspect
+
+  someYamlBean:
+    class: MyService
+
+#   The example uses global aspects, they are declared globally. 
+#   But you could also define an aspect inside the bean, like:
+#
+#  someYamlBean:
+#    class: MyService
+#    aspects:
+#      aspectA:
+#        pointcuts:
+#          pointcutA:
+#            method: methodInterceptor
+#            expression: doBusiness[12]
+#        type: method
+#        ref: myAspectBean
+#      aspectB:
+#        pointcuts:
+#          pointcutA:
+#            method: exceptionInterceptor
+#            expression: \w
+#        type: method
+#        ref: myAspectBean

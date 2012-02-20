@@ -1,0 +1,8 @@
+These are the examples of:
+http://marcelog.github.com/articles/ding_php_aop_aspect_oriented_programming.html
+
+Showing how to use Aspect Oriented Programming with the Ding container, using
+annotations, xml, and yaml drivers, with global aspects and with aspects specified
+per bean definition.
+
+

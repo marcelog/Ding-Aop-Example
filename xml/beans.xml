@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+  <aspect
+    id="anAspect"
+    expression="Service$"
+    ref="myAspectBean"
+    type="method">
+    <pointcut expression="doBusiness[12]" method="methodInterceptor"/>
+  </aspect>
+  <aspect
+    id="anAspect2"
+    expression="Service$"
+    ref="myAspectBean"
+    type="exception">
+    <pointcut expression="\w" method="exceptionInterceptor"/>
+  </aspect>
+
+
+  <bean id="someXmlBean" class="MyService"/>
+  <bean id="myAspectBean" class="AnAspect"/>
+
+  <!--
+   The example uses global aspects, they are declared globally. 
+   But you could also define an aspect inside the bean, like:
+
+   <bean id="someXmlBean" class="MyService">
+     <aspect ref="myAspectBean" type="method">
+       <pointcut id="aPointcut" expression="doBusiness[12]" method="methodInterceptor"/>
+     </aspect>
+     <aspect ref="myAspectBean" type="exception">
+       <pointcut id="anotherPointcut" expression="\w" method="exceptionInterceptor"/>
+     </aspect>  
+   </bean>
+
+  -->
+</beans>
+
